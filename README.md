@@ -118,8 +118,8 @@ kader-local-system/
 ![Attendance](Screenshots/attendance.png)
 
 ### Message Tracking
-![Registration Message](Screenshots/registration message.png)
-![Attendance Message](Screenshots/attendance message.png)
+![Registration Message](Screenshots/registration%20message.png)
+![Attendance Message](Screenshots/attendance%20message.png)
 
 ---
 
