@@ -102,24 +102,24 @@ kader-local-system/
 ## 📷 Screenshots
 
 ### Dashboard
-![Dashboard](Screenshots 1/dashboard.png)
+![Dashboard](ScreenshotS/dashboard.png)
 
 ### Students Page
-![Students Page](Screenshots 1/students.png)
-![Students Page](Screenshots 1/students2.png)
+![Students Page](Screenshots/students.png)
+![Students Page](Screenshots/students2.png)
 
 ### Courses Page
-![Courses Page](Screenshots 1/courses.png)
+![Courses Page](Screenshots/courses.png)
 
 ### Groups Page
-![Groups Page](Screenshots 1/groups.png)
+![Groups Page](Screenshots/groups.png)
 
 ### Attendance Tracking
-![Attendance](Screenshots 1/attendance.png)
+![Attendance](Screenshots/attendance.png)
 
 ### Message Tracking
-![Registration Message](Screenshots 1/registration message.png)
-![Attendance Message](Screenshots 1/attendance message.png)
+![Registration Message](Screenshots/registration message.png)
+![Attendance Message](Screenshots/attendance message.png)
 
 ---
 
