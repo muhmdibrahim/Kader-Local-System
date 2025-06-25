@@ -105,7 +105,7 @@ kader-local-system/
 ![Dashboard](Screenshots%201/dashboard.png)
 
 ### Students Page
-![Students Page](Screenshots%201%201/students.png)
+![Students Page](Screenshots%201/students.png)
 ![Students Page](Screenshots%201/students2.png)
 
 ### Courses Page
