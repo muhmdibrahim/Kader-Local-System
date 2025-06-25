@@ -1,0 +1,58 @@
+Here's how to convert your Flask app into a standalone desktop application with an icon that you can launch directly like any other program (no command line needed):
+
+🛠️ Method 1: PyInstaller (Best for Windows/macOS/Linux)
+Step 1: Install Required Tools
+bash
+pip install pyinstaller pywebview
+Step 2: Create a Wrapper Script (desktop_launcher.py)
+python
+import webview
+import threading
+from app import app  # Import your Flask app
+
+def run_flask():
+    app.run(host='127.0.0.1', port=5000)
+
+if __name__ == '__main__':
+    t = threading.Thread(target=run_flask)
+    t.daemon = True
+    t.start()
+    
+    window = webview.create_window(
+        'Kader Academy',
+        'http://127.0.0.1:5000',
+        width=1200,
+        height=800,
+        resizable=True,
+        text_select=True
+    )
+    webview.start()
+Step 3: Prepare an Icon
+Create/download a .ico file (Windows) or .icns (macOS)
+
+Place it in your project folder as icon.ico
+
+Step 4: Build the Executable
+bash
+pyinstaller --onefile --windowed --icon=icon.ico --name "KaderAcademy" --add-data "templates;templates" --add-data "static;static" desktop_launcher.py
+Step 5: Find Your App
+The executable will be in dist/KaderAcademy.exe (Windows) or dist/KaderAcademy.app (macOS)
+
+Double-click to run!
+
+📌 Method 2: Create a Desktop Shortcut (For Quick Access)
+Windows:
+Right-click your .exe file → "Create shortcut"
+
+Right-click the shortcut → "Properties" → "Change Icon" → Browse to your .ico file
+
+Drag the shortcut to your Desktop/Start Menu
+
+macOS:
+Right-click your .app → "Make Alias"
+
+Drag the alias to your Dock/Desktop
+=======================================================================
+=======================================================================
+confirm that database.py : CREATE TABLE --- IF NOT EXIST(""" ---------------""")
+copy file of database(.db) to dist with app_name.exe

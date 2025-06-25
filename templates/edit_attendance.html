@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Edit Attendance for {{ student[1] }}</h1>
+    <p>Session Date: {{ record[2] }}</p>
+    
+    <form method="post">
+        <div class="form-group">
+            <label for="status">Status:</label>
+            <select name="status" id="status" required>
+                <option value="present" {% if record[3] == 'present' %}selected{% endif %}>Present</option>
+                <option value="absent" {% if record[3] == 'absent' %}selected{% endif %}>Absent</option>
+                <option value="late" {% if record[3] == 'late' %}selected{% endif %}>Late</option>
+                <option value="excused" {% if record[3] == 'excused' %}selected{% endif %}>Excused</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="rating">Rating (1-5):</label>
+            <select name="rating" id="rating">
+                <option value="">Select rating</option>
+                {% for i in range(1, 6) %}
+                    <option value="{{ i }}" {% if record[5] == i %}selected{% endif %}>
+                        {{ i }} {% for star in range(i) %}★{% endfor %}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
+        
+        <div class="form-group">
+            <label for="feedback">Feedback:</label>
+            <select id="feedback-presets" class="feedback-preset" onchange="applyPreset()">
+                <option value="">-- Select a preset comment --</option>
+                <option value="Impressive problem-solving skills! Your ability to tackle complex coding challenges with creativity and ingenuity is a standout trait.">1. Excellent problem-solving abilities</option>
+                <option value="You've shown great initiative in exploring additional resources beyond the curriculum. Your enthusiasm for self-directed learning is admirable.">2. Keen on learning</option>
+                <option value="You've shown improvement in your engagement over the past sessions. Keep up the active participation—it positively impacts your understanding of the material.">3. Engagement Improvement</option>
+                <option value="I appreciate your enthusiasm during coding exercises. Your engagement demonstrates a genuine interest in mastering the material.">4. Enthusiasm during coding exercises</option>
+                <option value="Your active participation in class discussions enhances the learning environment. Your insightful questions contribute to meaningful conversations.">5. Discussed in a brilliant way</option>
+                <option value="The student has a positive attitude toward challenges and approaches problem-solving with enthusiasm.">6. Positive attitude</option>
+                <option value="I've observed improvement in the student's coding skills, particularly in the application of new concepts and problem-solving techniques.">7. Programming improvement</option>
+                <option value="I appreciate the effort the student puts into seeking additional challenges beyond the curriculum, showcasing a proactive approach to learning.">8. Seeking additional challenges</option>
+                <option value="I've observed growth in the student's ability to explain coding concepts to peers, indicating a strong grasp of the material.">9. Programming skills improvement</option>
+                <option value="Your commitment to seeking help when faced with challenges in the homework is a wise approach. It shows a dedication to mastering the material.">10. Brave in seeking help with h.w challenges</option>
+                <option value="Well done on applying concepts from class to your homework. It's clear that you're making a conscious effort to connect theory with practical implementation.">11. Excellent study appears in h.w</option>
+                <option value="I'm impressed by your creativity in solving the homework problems. Your innovative solutions showcase a deep understanding of the material.">12. Creative h.w</option>
+                <option value="Your code organization in the homework is outstanding. Well-structured code is not only easier to read but also reflects a solid understanding of coding principles.">13. Excellent code organization</option>
+                <option value="Great job on going above and beyond the homework requirements. Your initiative to explore additional challenges demonstrates a strong commitment to learning.">14. Exceeded homework requirements</option>
+                <option value="Excellent work on your recent homework assignment! Your attention to detail and adherence to best practices are evident in your code.">15. Excellent h.w details</option>
+                <option value="The student demonstrates a strong understanding of the coding concepts covered in recent homework assignments, and their solutions are both creative and effective.">16. Strong h.w understanding</option>
+                <option value="I have concerns about the student's engagement during class sessions. Encouraging more active participation would significantly benefit their learning experience.">17. More engagement required</option>
+                <option value="The student was distracted during the session and needs to be more focused.">18. Need to focus</option>
+                <option value="There are inconsistencies in the student's coding style and adherence to coding standards. Encouraging a more consistent approach would improve code quality.">19. Need to improve code clarity</option>
+                <option value="There is room for improvement in your responsiveness during coding exercises. Actively participating in problem-solving will strengthen your problem-solving skills.">20. Improve responsiveness</option>
+                <option value="I've noticed hesitancy in asking questions when faced with uncertainties. Don't hesitate to seek clarification—it's an integral part of the learning process.">21. Feel free to ask</option>
+                <option value="I've concerns about the consistency of the student's homework submissions. Encouraging a more punctual approach to completing assignments would benefit their overall progress.">22. Improve homework consistency</option>
+                <option value="The student should review the theoretical concept since he gave incorrect answers to most of my questions.">23. Study more</option>
+                <option value="Consider breaking down complex problems into smaller, more manageable tasks. This approach can help make problem-solving more approachable and efficient.">24. Advice to solve problems</option>
+                <option value="In the recent assignment, there were logic errors that impacted the functionality. Take the time to thoroughly test your code to catch these issues early.">25. Test code more thoroughly</option>
+                <option value="custom">26. Custom feedback...</option>
+            </select>
+            <textarea name="feedback" id="feedback" rows="4">{{ record[4] if record else '' }}</textarea>
+        </div>
+        
+        <button type="submit" class="button">Update Attendance</button>
+        <a href="{{ url_for('student_attendance', student_id=student[0]) }}" class="red-button">Cancel</a>
+    </form>
+    <script>
+        function applyPreset() {
+            const presetSelect = document.getElementById('feedback-presets');
+            const feedbackTextarea = document.getElementById('feedback');
+            
+            if (presetSelect.value === 'custom') {
+                feedbackTextarea.value = '';
+                feedbackTextarea.focus();
+            } else if (presetSelect.value) {
+                feedbackTextarea.value = presetSelect.value;
+            }
+        }
+    </script>
+{% endblock %}

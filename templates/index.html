@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="dashboard">
+    <section class="welcome-section">
+        <h2>Welcome to Kader Student Management System</h2>
+        <p>Efficiently manage student records, courses, and attendance in one place.</p>
+    </section>
+
+    <div class="dashboard-grid">
+        <!-- Quick Stats Cards -->
+        <div class="dashboard-card">
+            <div class="card-icon">
+                <i class="fas fa-users"></i>
+            </div>
+            <div class="card-content">
+                <h3>Total Students</h3>
+                <p class="stat-number">{{ total_students_count }}</p>
+                <a href="{{ url_for('students') }}" class="card-link">View All</a>
+            </div>
+        </div>
+
+        <div class="dashboard-card">
+            <div class="card-icon">
+                <i class="fas fa-book"></i>
+            </div>
+            <div class="card-content">
+                <h3>Total Courses</h3>
+                <p class="stat-number">{{ course_count }}</p>
+                <a href="{{ url_for('courses') }}" class="card-link">View All</a>
+            </div>
+        </div>
+        <div class="dashboard-card">
+            <div class="card-icon">
+                <i class="fas fa-people-group"></i>
+            </div>
+            <div class="card-content">
+                <h3>Total Groups</h3>
+                <p class="stat-number">{{ group_count }}</p>
+                <a href="{{ url_for('groups') }}" class="card-link">View All</a>
+            </div>
+        </div>
+<!--
+        <div class="dashboard-card">
+            <div class="card-icon">
+                <i class="fas fa-calendar-check"></i>
+            </div>
+            <div class="card-content">
+                <h3>Today's Attendance</h3>
+                <p class="stat-number">{{ attendance_today }}/{{ student_count }}</p>
+                <a href="#" class="card-link">Take Attendance</a>
+            </div>
+        </div>
+-->
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <h3>Quick Actions</h3>
+            <div class="action-buttons">
+                <a href="{{ url_for('add_student_route') }}" class="action-btn">
+                    <i class="fas fa-user-plus"></i>
+                    Add New Student
+                </a>
+                <a href="{{ url_for('add_course_route') }}" class="action-btn">
+                    <i class="fas fa-book-medical"></i>
+                    Add New Course
+                </a>
+                <a href="{{ url_for('add_group_route') }}" class="action-btn">
+                    <i class="fas fa-book-medical"></i>
+                    Add New GRoup
+                </a>
+            </div>
+        </div>
+
+        <!-- Recent Activity -->
+        <div class="recent-activity">
+            <h3>Recent Activity</h3>
+            <ul class="activity-list">
+                <li>
+                    <i class="fas fa-user-graduate activity-icon"></i>
+                    <span>5 new students registered today</span>
+                    <span class="activity-time">2 hours ago</span>
+                </li>
+                <li>
+                    <i class="fas fa-book activity-icon"></i>
+                    <span>New course "Advanced Leadership" added</span>
+                    <span class="activity-time">Yesterday</span>
+                </li>
+                <li>
+                    <i class="fas fa-check-circle activity-icon"></i>
+                    <span>Attendance marked for Level 3 students</span>
+                    <span class="activity-time">Yesterday</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

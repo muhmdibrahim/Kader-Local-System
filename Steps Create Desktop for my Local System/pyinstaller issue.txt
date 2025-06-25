@@ -1,0 +1,47 @@
+how to solve:
+C:\Users\Mohamed>C:\Python313\python.exe -m pyinstaller --version
+C:\Python313\python.exe: No module named pyinstaller
+This error occurs when PyInstaller isn't installed for the specific Python version you're using. Here's how to fix it:
+
+🔧 Solution Steps
+First verify Python is correctly installed
+
+cmd
+C:\Python313\python.exe --version
+(Should show Python 3.13.x)
+
+Install PyInstaller specifically for Python 3.13
+
+cmd
+C:\Python313\python.exe -m pip install pyinstaller
+Verify installation
+
+cmd
+C:\Python313\python.exe -m PyInstaller --version
+💡 If you still get the error
+Option A: Reinstall with admin rights
+cmd
+Run Command Prompt as Administrator
+C:\Python313\python.exe -m pip install --force-reinstall pyinstaller
+Option B: Check installation location
+cmd
+C:\Python313\python.exe -c "import sys; print(sys.path)"
+Look for site-packages directory in output
+
+Option C: Alternative install method
+cmd
+C:\Python313\python.exe -m ensurepip --upgrade
+C:\Python313\python.exe -m pip install --user pyinstaller
+🚀 After successful installation
+Build your app using:
+
+cmd
+C:\Python313\python.exe -m PyInstaller --onefile --windowed app.py
+🔍 Common Reasons for This Error
+Multiple Python installations conflicting
+
+PyInstaller installed for wrong Python version
+
+Broken pip installation
+
+Let me know if you need any clarification or if you're still facing issues!

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Students</h1>
+    <a href="{{ url_for('add_student_route') }}" class="special-button">Add New Student</a>
+    
+    <div class="search-form">
+        <form method="GET" action="{{ url_for('students') }}">
+            <input type="text" name="search" placeholder="Search by name or ID..." value="{{ search_term if search_term }}">
+            <button type="submit" class="button">Search</button>
+            {% if search_term %}
+                <a href="{{ url_for('students') }}" class="special-button">Clear</a>
+            {% endif %}
+        </form>
+    </div>
+    
+    <div style="overflow-x: auto;">
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Student ID</th>
+                    <th>Level</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Num Courses</th>
+                    <th>Num Sessions</th>
+                    <th>Day 1</th>
+                    <th>Day 2</th>
+                    <th>Slot 1</th>
+                    <th>Slot 2</th>
+                    <th>Attended</th>
+                    <th>Left</th>
+                    <th>Paid</th>
+                    <th>Left to Pay</th>
+                    <th>Date</th>
+                    <th>Excused Sessions</th>
+                    <th>Account Type</th>
+                    <th>Num of Students</th>
+                    <th>Actions</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                    <tr>
+                        <td>{{ student[0] }}</td>  <!-- id -->
+                        <td>{{ student[1] }}</td>  <!-- name -->
+                        <td>{{ student[2] }}</td>  <!-- student_id -->
+                        <td>{{ student[3] }}</td>  <!-- level -->
+                        <td>{{ student[4] }}</td>  <!-- email -->
+                        <td>{{ student[5] }}</td>  <!-- phone -->
+                        <td>{{ student[6] }}</td>  <!-- num_courses -->
+                        <td>{{ student[7] }}</td>  <!-- num_sessions -->
+                        <td>{{ student[8] }}</td>  <!-- schedule_day_1 -->
+                        <td>{{ student[9] }}</td>  <!-- schedule_day_2 -->
+                        <td>{{ student[10] }}</td> <!-- time_slot_1 -->
+                        <td>{{ student[11] }}</td> <!-- time_slot_2 -->
+                        <td>{{ student[12] }}</td> <!-- num_attended_session -->
+                        <td>{{ student[13] }}</td> <!-- num_excused_session -->
+                        <td>{{ student[14] }}</td> <!-- left_sessions -->
+                        <td>{{ student[15] }}</td> <!-- payment_paid -->
+                        <td>{{ student[16] }}</td> <!-- payment_left -->
+                        <td>{{ student[17] }}</td> <!-- account type -->
+                        <td>{{ student[18] }}</td> <!-- num of students -->
+                        <td>{{ student[19] }}</td> <!-- created_at -->
+                        <td class="actions">
+                            <div style="display: flex;">
+                                <a href="{{ url_for('student_attendance', student_id=student[0]) }}" class="special-button" style="border: 1px solid black;">Attendance</a>
+                                <a href="{{ url_for('edit_student_route', student_id=student[0]) }}" class="special-button" style="border: 1px solid black; margin-left: 5px;">Edit</a>
+                            </div>
+                            <form action="{{ url_for('delete_student_route', student_id=student[0]) }}" method="POST" style="margin-top: 5px;">
+                                <button type="submit" class="red-button" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
