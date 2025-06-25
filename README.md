@@ -53,14 +53,14 @@ kader-local-system/
 │   └── ...
 ├── static/
 │   ├── css/
-├── database/
-│   └── kader.db
-├── screenshots/
+├── screenshots 1/
 │   ├── dashboard.png
 │   ├── students-page.png
 │   └── attendance.png
 |   └── ...
 └── README.md
+└── database.py
+└── desktop_launcher.py
 
 ````
 
@@ -102,24 +102,24 @@ kader-local-system/
 ## 📷 Screenshots
 
 ### Dashboard
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](Screenshots 1/dashboard.png)
 
 ### Students Page
-![Students Page](screenshots/students.png)
-![Students Page](screenshots/students2.png)
+![Students Page](Screenshots 1/students.png)
+![Students Page](Screenshots 1/students2.png)
 
 ### Courses Page
-![Courses Page](screenshots/courses.png)
+![Courses Page](Screenshots 1/courses.png)
 
 ### Groups Page
-![Groups Page](screenshots/groups.png)
+![Groups Page](Screenshots 1/groups.png)
 
 ### Attendance Tracking
-![Attendance](screenshots/attendance.png)
+![Attendance](Screenshots 1/attendance.png)
 
 ### Message Tracking
-![Message](screenshots/registration message.png)
-![Message](screenshots/attendance message.png)
+![Registration Message](Screenshots 1/registration message.png)
+![Attendance Message](Screenshots 1/attendance message.png)
 
 ---
 
