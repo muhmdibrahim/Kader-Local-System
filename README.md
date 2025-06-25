@@ -102,7 +102,7 @@ kader-local-system/
 ## 📷 Screenshots
 
 ### Dashboard
-![Dashboard](ScreenshotS%201/dashboard.png)
+![Dashboard](Screenshots%201/dashboard.png)
 
 ### Students Page
 ![Students Page](Screenshots%201%201/students.png)
